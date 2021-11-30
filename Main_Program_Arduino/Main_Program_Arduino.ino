@@ -16,7 +16,11 @@ int sensorPin = A2;
 int sensorValue = 0;
 int stateCount = 0;
 int yTjek = 0;
-const char* listElev[] = {"Anders","Emil","Fahmi","Freja","Gustav Werk","Gustav Wett","Haris","Ismail","Jabriil","Jakob","Ludvig","Jeppe","Jonatan","Kasper","Lovro","Mathias","Mie","Mohammad","Nelisa","Nicolai","Pernille","Rasmus","Robert","Sarah","Silas","Simon","Thøger","Tobias","Taaha","William"};
+
+//variebler til random elev funktionen
+const char* chosenElev;
+const char* classMateList[] = {"Anders","Emil","Fahmi","Freja","Gustav Werk","Gustav Wett","Haris","Ismail","Jabriil","Jakob","Ludvig","Jeppe","Jonatan","Kasper","Lovro","Mathias","Mie","Mohammad","Nelisa","Nicolai","Pernille","Rasmus","Robert","Sarah","Silas","Simon","Thøger","Tobias","Taaha","William"};
+
 String picker = "";
 
   void setup()
@@ -33,6 +37,10 @@ String picker = "";
     clock.fillByHMS(8, 52, 00); 
     clock.fillDayOfWeek(THU);
     clock.setTime();//write time to the RTC chip
+
+    // random elev setup
+    randomSeed(analogRead(A3));
+    pinMode(4, INPUT);
   }
 
   void loop()
@@ -43,13 +51,13 @@ String picker = "";
     if (stateCount == 1)
     {
       //printTime();
-      lcd.print(stateCount);
+      //lcd.print(stateCount);
     }
     else if (stateCount == 2)
     {
-      lcd.print(randomElev());
-      lcd.print(stateCount);
-      }
+      randomElevMode();
+      //lcd.print(stateCount);
+    }
     
     delay(100);
     lcd.clear();

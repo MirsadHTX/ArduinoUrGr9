@@ -101,8 +101,21 @@ void speaker()
   digitalWrite(2,LOW);
   delay(100);
   }
-*/
+
 String randomElev(){
 picker = listElev[random(0,32)];
 return picker;
+}
+*/
+
+void randomElevMode() {
+  //this is the function responsible for the random class mate picker
+  if(digitalRead(4) == true){
+    chosenElev = classMateList[random(0, 30)];
+    delay(10);
+  }
+  
+  lcd.clear();
+  lcd.print(chosenElev);
+  delay(50);
 }
