@@ -128,3 +128,25 @@ void temperature() {
 
   lcd.print(temperature);
 }
+
+void stopur() {
+  secunder += 1;
+
+  if(secunder > 59) {
+    secunder = 0;
+    minuter += 1;
+  }
+
+  if(minuter > 59) {
+    minuter = 0;
+    timme += 1;
+  }
+
+  lcd.print(timme);
+  lcd.print(":");
+  lcd.print(minuter);
+  lcd.print(":");
+  lcd.print(secunder);
+
+  delay(900);
+}

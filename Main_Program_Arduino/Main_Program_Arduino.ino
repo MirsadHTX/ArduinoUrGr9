@@ -23,6 +23,11 @@ int colorG;
 int colorB;
 int lightAmplifier = 0;
 
+//stopur variables
+int secunder;
+int minuter;
+int timme;
+
 //variebler til random elev funktionen
 const char* chosenElev;
 const char* classMateList[] = {"Anders","Emil","Fahmi","Freja","Gustav Werk","Gustav Wett","Haris","Ismail","Jabriil","Jakob","Ludvig","Jeppe","Jonatan","Kasper","Lovro","Mathias","Mie","Mohammad","Nelisa","Nicolai","Pernille","Rasmus","Robert","Sarah","Silas","Simon","Thøger","Tobias","Taaha","William"};
@@ -78,6 +83,10 @@ String picker = "";
     else if (stateCount == 3)
     {
       temperature();
+    }
+    else if (stateCount == 4)
+    {
+      stopur();
     }
     
     delay(100);
