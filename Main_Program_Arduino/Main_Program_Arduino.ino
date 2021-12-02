@@ -17,9 +17,19 @@ int sensorValue = 0;
 int stateCount = 0;
 int yTjek = 0;
 
+//background light variables
+int colorR;
+int colorG;
+int colorB;
+int lightAmplifier = 0;
+
 //variebler til random elev funktionen
 const char* chosenElev;
 const char* classMateList[] = {"Anders","Emil","Fahmi","Freja","Gustav Werk","Gustav Wett","Haris","Ismail","Jabriil","Jakob","Ludvig","Jeppe","Jonatan","Kasper","Lovro","Mathias","Mie","Mohammad","Nelisa","Nicolai","Pernille","Rasmus","Robert","Sarah","Silas","Simon","Thøger","Tobias","Taaha","William"};
+
+//variablerne til temperatur funktionen
+const int B = 4275;               // B value of the thermistor
+const int R0 = 100000;            // R0 = 100k
 
 String picker = "";
 
@@ -45,18 +55,29 @@ String picker = "";
 
   void loop()
   {
+    lightAmplifier = analogRead(A1);
+  
+    lcd.setRGB(colorR, colorG, colorB);
+    colorR = lightAmplifier >> 2;
+    colorG = lightAmplifier >> 2;
+    colorB = lightAmplifier >> 2;
+    
     rotate();
     //buttomCounter();
     lcd.setCursor(0, 1);
     if (stateCount == 1)
     {
-      //printTime();
+      printTime();
       //lcd.print(stateCount);
     }
     else if (stateCount == 2)
     {
       randomElevMode();
       //lcd.print(stateCount);
+    }
+    else if (stateCount == 3)
+    {
+      temperature();
     }
     
     delay(100);
