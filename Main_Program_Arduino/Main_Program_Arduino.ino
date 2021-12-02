@@ -67,7 +67,7 @@ String picker = "";
     lcd.setCursor(0, 1);
     if (stateCount == 1)
     {
-      printTime();
+      //printTime();
       //lcd.print(stateCount);
     }
     else if (stateCount == 2)
